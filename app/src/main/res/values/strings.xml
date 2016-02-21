@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">Gramatyka2016</string>
+    <string name="download_data">Pobieranie danych..</string>
+    <string name="yes_label">Tak</string>
+    <string name="no_label">Nie</string>
+    <string name="ok_label">OK</string>
+
+    <string name="your_stats">Twoje statystyki</string>
+    <string name="recreateLocal">Brak dostępu do sieci\nTworzenie bazy z pamięci lokalnej</string>
+    <string name="download_actual_database_version">Pobrano aktualną wersję bazy danych</string>
+    <string name="no_network">Brak połączenia z siecią!</string>
+
+    <string name="quiz">Quiz</string>
+    <string name="about">O aplikacji</string>
+    <string name="categories">Kategorie</string>
+
+    <string name="about_content">\tAplikacja zawiera ćwiczenia dotyczące gramatyki angielskiej.\nObejmuje średniozaawansowane jak również bardziej zaawansowane zagaadnienia związane z gramatyką takie jak:
+    \n\n
+    - czasy gramatyczne\n
+    - bezokoliczniki\n
+    - imiesłowy kontra bezokoliczniki\n
+    - czasowniki modalne\n
+    - mowa zależna\n
+    - strona bierna\n
+    - tryb łączący\n
+    - zdania złożone\n
+    \n\n
+    \tŁącznie do dyspozycji jest 170 ćwiczeń z wybranych elementów gramatyki angielskiej.\n
+    \n\n
+    \tAplikacja ta adresowana jest do osób zdających egzaminy, w których występują ćwiczenia gramatyczne (maturzyści, poziom podstawowy i rozszerzony, studenci zdający egzamin na poziomie B2 itp.)\n</string>
+    <string name="chooseCategory">Wybierz kategorię i przećwicz zadania</string>
+    <string name="yourMark">Twoja ocena: </string>
 </resources>

@@ -2,10 +2,29 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:buttonStyle">@style/FicheButtonBig</item>
+        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+        <item name="android:radioButtonStyle">@style/AppRadioButton</item>
+    </style>
+
+    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="AppRadioButton" parent="android:Widget.Holo.Light.CompoundButton.RadioButton">
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
+    <style name="FicheButtonBig">
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:padding">@dimen/BigButtonPadding</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="FicheButtonNormal" parent="FicheButtonBig">
+        <item name="android:padding">@dimen/NormalButtonPadding</item>
     </style>
 
 </resources>
