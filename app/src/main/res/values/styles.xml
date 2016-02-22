@@ -27,4 +27,8 @@
         <item name="android:padding">@dimen/NormalButtonPadding</item>
     </style>
 
+    <style name="FicheButtonSmall" parent="FicheButtonBig">
+        <item name="android:padding">@dimen/SmallButtonPadding</item>
+    </style>
+
 </resources>

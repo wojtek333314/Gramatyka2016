@@ -1,14 +1,17 @@
 package com.brotherhood.gramatyka.models;
 
-import java.util.ArrayList;
+import com.brotherhood.gramatyka.models.enums.ReplyType;
+
+import java.util.HashMap;
 
 /**
  * Created by Wojtek on 2016-02-21.
  */
 public class TaskModel {
     private String task;
-    private String subTask;//optional
-    private ArrayList<ReplyModel> replies;
+    private String subTask;
+    private String subTask2;
+    private HashMap<ReplyType,ReplyModel> replies;
 
     public TaskModel(String task) {
         this.task = task;
@@ -16,15 +19,23 @@ public class TaskModel {
 
     public void setSubTask(String subTask){
         this.subTask = subTask;
-        this.replies = new ArrayList<>();
+        this.replies = new HashMap<>();
     }
 
-    public void addReplyModel(ReplyModel replyModel){
-        replies.add(replyModel);
+    public String getSubTask2() {
+        return subTask2;
     }
 
-    public ArrayList<ReplyModel> getReplies() {
-        return replies;
+    public void setSubTask2(String subTask2) {
+        this.subTask2 = subTask2;
+    }
+
+    public void addReplyModel(ReplyType replyType,ReplyModel replyModel){
+        replies.put(replyType, replyModel);
+    }
+
+    public ReplyModel getReply(ReplyType replyType){
+        return replies.get(replyType);
     }
 
     public String getTask() {

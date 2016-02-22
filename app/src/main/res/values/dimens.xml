@@ -5,4 +5,5 @@
     <dimen name="layout_margin_normal">8dp</dimen>
     <dimen name="BigButtonPadding">20dp</dimen>
     <dimen name="NormalButtonPadding">12dp</dimen>
+    <dimen name="SmallButtonPadding">6dp</dimen>
 </resources>

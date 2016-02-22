@@ -18,4 +18,8 @@ public class ReplyModel {
     public void setIsCorrect(boolean isCorrect) {
         this.isCorrect = isCorrect;
     }
+
+    public String getReply() {
+        return reply;
+    }
 }
