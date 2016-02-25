@@ -12,6 +12,7 @@ public class TaskModel {
     private String subTask;
     private String subTask2;
     private HashMap<ReplyType,ReplyModel> replies;
+    private CategoryModel categoryModel;
 
     public TaskModel(String task) {
         this.task = task;
@@ -44,5 +45,13 @@ public class TaskModel {
 
     public String getSubTask() {
         return subTask;
+    }
+
+    public CategoryModel getCategoryModel() {
+        return categoryModel;
+    }
+
+    public void setCategoryModel(CategoryModel categoryModel) {
+        this.categoryModel = categoryModel;
     }
 }

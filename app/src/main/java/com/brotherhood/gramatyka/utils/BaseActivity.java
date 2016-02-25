@@ -94,4 +94,7 @@ public abstract class BaseActivity extends Activity {
         return netInfo != null && netInfo.isConnectedOrConnecting();
     }
 
+    protected void log(Object msg){
+        System.out.println(msg.toString());
+    }
 }

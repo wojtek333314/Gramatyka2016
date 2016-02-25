@@ -5,7 +5,7 @@ public enum ServiceType {
     GET_DATABASE,
     CHECK_VERSION;
 
-    public static final String SERVER_PATH = "http://www.datastore.waw.pl/Grammar2016/";
+    public static final String SERVER_PATH = "http://www.datastore.waw.pl/grammar2016/";
 
     public static String getURL(ServiceType serviceType){
         switch(serviceType){

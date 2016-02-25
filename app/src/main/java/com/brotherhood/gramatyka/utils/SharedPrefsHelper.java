@@ -25,11 +25,20 @@ public class SharedPrefsHelper {
     }
 
     public long getLong(String key){
-        return sharedPreferences.getLong(key,0);
+        return sharedPreferences.getLong(key, 0);
     }
 
     public void putLong(String key,long value){
-        editor.putLong(key,value);
+        editor.putLong(key, value);
+        editor.commit();
+    }
+
+    public float getFloat(String key){
+        return sharedPreferences.getFloat(key, 0);
+    }
+
+    public void putFloat(String key,float value){
+        editor.putFloat(key,value);
         editor.commit();
     }
 }

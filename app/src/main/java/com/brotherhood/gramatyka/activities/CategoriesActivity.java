@@ -16,13 +16,14 @@ public class CategoriesActivity extends BaseActivity {
     @Override
     protected void customOnCreate() {
         setContentView(R.layout.activity_categories);
-
         ListView listView = (ListView)findViewById(R.id.categoriesListView);
         CategoriesAdapter categoriesAdapter = new CategoriesAdapter(this);
 
-        CategoryModel categoryModel1 = new CategoryModel("test");
-        categoryModel1.setRate(3.6f);
-        categoriesAdapter.addCategoryModel(categoryModel1);
+        for(CategoryModel categoryModel : getDatabaseHelper().getAllCategories())
+        {
+            categoryModel.setRate(getSharedPrefsHelper().getFloat(categoryModel.getName()+"_rate"));
+            categoriesAdapter.addCategoryModel(categoryModel);
+        }
 
         listView.setAdapter(categoriesAdapter);
     }

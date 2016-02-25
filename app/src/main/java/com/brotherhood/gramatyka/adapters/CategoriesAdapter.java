@@ -57,7 +57,6 @@ public class CategoriesAdapter extends BaseAdapter {
 
     private String floatMarkToString(float mark){
         String stringMark = baseActivity.getString(R.string.yourMark);
-
         if(mark == 0)
             stringMark += " -";
         if(mark > 0 && mark <2)

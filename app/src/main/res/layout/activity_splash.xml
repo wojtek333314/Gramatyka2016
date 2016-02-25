@@ -48,7 +48,8 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="@string/download_data"
             android:id="@+id/textView2"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:gravity="center_vertical|center_horizontal" />
 
     </LinearLayout>
 
