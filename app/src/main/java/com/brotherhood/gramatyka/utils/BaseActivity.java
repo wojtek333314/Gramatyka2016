@@ -87,6 +87,22 @@ public abstract class BaseActivity extends Activity {
         alertDialog.show();
     }
 
+    protected void showMsgBox(String title, String msg
+            , String button1Text,DialogInterface.OnClickListener yesButtonClickListener,String button2Text
+            ,DialogInterface.OnClickListener noButtonClickListener) {
+        if (alertDialog != null && alertDialog.isShowing())
+            return;
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        if (title != null && !title.equals(""))
+            builder.setTitle(title);
+        builder.setMessage(msg);
+        builder.setPositiveButton(button1Text, yesButtonClickListener);
+        builder.setNegativeButton(button2Text, noButtonClickListener);
+        alertDialog = builder.create();
+        alertDialog.show();
+    }
+
     protected boolean isOnline() {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

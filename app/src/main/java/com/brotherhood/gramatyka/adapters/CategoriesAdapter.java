@@ -1,5 +1,6 @@
 package com.brotherhood.gramatyka.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,6 @@ public class CategoriesAdapter extends BaseAdapter {
 
     public CategoriesAdapter(BaseActivity baseActivity) {
         this.baseActivity = baseActivity;
-        //todo getFromDatabase categories, baseActivity from c-str is for access to database
     }
 
     @Override
@@ -50,13 +50,13 @@ public class CategoriesAdapter extends BaseAdapter {
         mark = (TextView) row.findViewById(R.id.rate);
 
         name.setText(data.get(position).getName());
-        mark.setText(floatMarkToString(data.get(position).getRate()));
+        mark.setText(floatMarkToString(baseActivity,data.get(position).getRate()*6));
 
         return (row);
     }
 
-    private String floatMarkToString(float mark){
-        String stringMark = baseActivity.getString(R.string.yourMark);
+    public static String floatMarkToString(Context context,float mark){
+        String stringMark = context.getString(R.string.yourMark);
         if(mark == 0)
             stringMark += " -";
         if(mark > 0 && mark <2)

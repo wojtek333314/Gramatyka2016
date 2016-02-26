@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">Gramatyka2016</string>
+    <string name="app_name">Ćwicz gramatykę angielską</string>
     <string name="download_data">Pobieranie danych..</string>
     <string name="yes_label">Tak</string>
     <string name="no_label">Nie</string>
     <string name="ok_label">OK</string>
 
+    <string name="nextTask">Następne pytanie</string>
     <string name="your_stats">Twoje statystyki</string>
     <string name="recreateLocal">Brak dostępu do sieci\nTworzenie bazy z pamięci lokalnej</string>
     <string name="download_actual_database_version">Pobrano aktualną wersję bazy danych</string>
@@ -25,11 +26,13 @@
     - tryb łączący\n
     - zdania złożone\n
     \n\n
-    \tŁącznie do dyspozycji jest 170 ćwiczeń z wybranych elementów gramatyki angielskiej.\n
+    \tŁącznie do dyspozycji jest SIZE_OF_DATABASE ćwiczeń z wybranych elementów gramatyki angielskiej.\n
     \n\n
     \tAplikacja ta adresowana jest do osób zdających egzaminy, w których występują ćwiczenia gramatyczne (maturzyści, poziom podstawowy i rozszerzony, studenci zdający egzamin na poziomie B2 itp.)\n</string>
     <string name="chooseCategory">Wybierz kategorię i przećwicz zadania</string>
-    <string name="yourMark">Twoja ocena: </string>
+    <string name="yourMark">Twoja ostatnia ocena: </string>
     <string name="showTask">Pokaż zadanie</string>
     <string name="counter">Zadanie: </string>
+    <string name="mark">Twoja ocena to:</string>
+    <string name="sumup">Poprawnie wykonałeś:</string>
 </resources>

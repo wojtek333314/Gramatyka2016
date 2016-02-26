@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.brotherhood.gramatyka.models.CategoryModel;
-import com.brotherhood.gramatyka.models.ReplyModel;
 import com.brotherhood.gramatyka.models.TaskModel;
 import com.brotherhood.gramatyka.models.enums.ReplyType;
 
@@ -15,6 +14,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 /**
  * Created by Wojtek on 2016-02-21.
@@ -71,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<TaskModel> getAllTaskModels() {
         ArrayList<TaskModel> entityList = new ArrayList<>();
-        Cursor cursor = getReadableDatabase().rawQuery("select * from " + TABLE_NAME, null);
+        Cursor cursor = getReadableDatabase().rawQuery("select * from " + TABLE_NAME + " ORDER BY "+ID, null);
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
                 String category = cursor.getString(cursor
@@ -93,22 +94,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String correctAnswer = cursor.getString(cursor
                         .getColumnIndex(CORRECT_ANSWER));
 
+
                 TaskModel model = new TaskModel(task);
                 model.setSubTask(subtask);
                 model.setSubTask2(subtask2);
-                model.addReplyModel(ReplyType.A, new ReplyModel(answerA));
-                model.addReplyModel(ReplyType.B, new ReplyModel(answerB));
-                model.addReplyModel(ReplyType.C, new ReplyModel(answerC));
-                model.addReplyModel(ReplyType.D, new ReplyModel(answerD));
+                model.addAnswer(answerA, ReplyType.A);
+                model.addAnswer(answerB, ReplyType.B);
+                model.addAnswer(answerC, ReplyType.C);
+                model.addAnswer(answerD, ReplyType.D);
 
-                if (correctAnswer.toLowerCase().replaceAll("\\s+", "").equals("a"))
-                    model.getReply(ReplyType.A).setIsCorrect(true);
-                if (correctAnswer.toLowerCase().replaceAll("\\s+", "").equals("b"))
-                    model.getReply(ReplyType.B).setIsCorrect(true);
-                if (correctAnswer.toLowerCase().replaceAll("\\s+", "").equals("c"))
-                    model.getReply(ReplyType.C).setIsCorrect(true);
-                if (correctAnswer.toLowerCase().replaceAll("\\s+", "").equals("d"))
-                    model.getReply(ReplyType.D).setIsCorrect(true);
+                if(correctAnswer.equals("a"))
+                    model.setCorrectAnswer(answerA);
+                if(correctAnswer.equals("b"))
+                    model.setCorrectAnswer(answerB);
+                if(correctAnswer.equals("c"))
+                    model.setCorrectAnswer(answerC);
+                if(correctAnswer.equals("d"))
+                    model.setCorrectAnswer(answerD);
+
 
                 model.setCategoryModel(new CategoryModel(category));
                 entityList.add(model);
@@ -117,12 +120,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             getReadableDatabase().close();
         }
 
+        Collections.rotate(entityList,new Random().nextInt(300));
         return entityList;
     }
 
     public ArrayList<TaskModel> getAllTaskModelsByCategory(String categoryName) {
         ArrayList<TaskModel> entityList = new ArrayList<>();
-        Cursor cursor = getReadableDatabase().rawQuery("select * from " + TABLE_NAME + " where category='" + categoryName + "'", null);
+        Cursor cursor = getReadableDatabase().rawQuery("select * from " + TABLE_NAME + " where category='" + categoryName + "' " +
+                " ORDER BY "+ID, null);
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
                 String category = cursor.getString(cursor
@@ -147,20 +152,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 TaskModel model = new TaskModel(task);
                 model.setSubTask(subtask);
                 model.setSubTask2(subtask2);
-                model.addReplyModel(ReplyType.A, new ReplyModel(answerA));
-                model.addReplyModel(ReplyType.B, new ReplyModel(answerB));
-                model.addReplyModel(ReplyType.C, new ReplyModel(answerC));
-                model.addReplyModel(ReplyType.D, new ReplyModel(answerD));
-
-                if (correctAnswer.toLowerCase().replaceAll("\\s+", "").equals("a"))
-                    model.getReply(ReplyType.A).setIsCorrect(true);
-                if (correctAnswer.toLowerCase().replaceAll("\\s+", "").equals("b"))
-                    model.getReply(ReplyType.B).setIsCorrect(true);
-                if (correctAnswer.toLowerCase().replaceAll("\\s+", "").equals("c"))
-                    model.getReply(ReplyType.C).setIsCorrect(true);
-                if (correctAnswer.toLowerCase().replaceAll("\\s+", "").equals("d"))
-                    model.getReply(ReplyType.D).setIsCorrect(true);
-
+                model.addAnswer(answerA, ReplyType.A);
+                model.addAnswer(answerB, ReplyType.B);
+                model.addAnswer(answerC, ReplyType.C);
+                model.addAnswer(answerD, ReplyType.D);
+                if(correctAnswer.equals("a"))
+                    model.setCorrectAnswer(answerA);
+                if(correctAnswer.equals("b"))
+                    model.setCorrectAnswer(answerB);
+                if(correctAnswer.equals("c"))
+                    model.setCorrectAnswer(answerC);
+                if(correctAnswer.equals("d"))
+                    model.setCorrectAnswer(answerD);
                 model.setCategoryModel(new CategoryModel(category));
                 if (category.equals(categoryName))
                     entityList.add(model);
@@ -174,7 +177,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<CategoryModel> getAllCategories() {
         ArrayList<CategoryModel> entityList = new ArrayList<>();
-        Cursor cursor = getReadableDatabase().rawQuery("select * from " + TABLE_NAME, null);
+        Cursor cursor = getReadableDatabase().rawQuery("select * from " + TABLE_NAME + " ORDER BY "+ID, null);
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
                 String category = cursor.getString(cursor
@@ -201,7 +204,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void saveSingleTaskModel(JSONObject json) throws JSONException {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(ID, json.getString("id"));
+        values.put(ID, Integer.parseInt(json.getString("id")));
         values.put(CATEGORY, json.getString("category"));
         values.put(ANSWER_A, json.getString("answerA"));
         values.put(ANSWER_B, json.getString("answerB"));

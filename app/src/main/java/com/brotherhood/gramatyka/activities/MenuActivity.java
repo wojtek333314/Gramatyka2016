@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.brotherhood.gramatyka.R;
+import com.brotherhood.gramatyka.activities.enums.GameMode;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -23,10 +24,13 @@ public class MenuActivity extends AppCompatActivity {
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(v.equals(quizView))
-                    startActivity(new Intent(getApplicationContext(),GameActivity.class));
-                if(v.equals(categoriesView))
-                    startActivity(new Intent(getApplicationContext(),CategoriesActivity.class));
+                if(v.equals(quizView)) {
+                    GameActivity.setGameMode(GameMode.QUIZ);
+                    startActivity(new Intent(getApplicationContext(), GameActivity.class));
+                }
+                if(v.equals(categoriesView)) {
+                    startActivity(new Intent(getApplicationContext(), CategoriesActivity.class));
+                }
                 if(v.equals(aboutView))
                     startActivity(new Intent(getApplicationContext(),AboutActivity.class));
             }

@@ -8,17 +8,18 @@ import java.util.HashMap;
  * Created by Wojtek on 2016-02-21.
  */
 public class TaskModel {
+    private String correctAnswer;
     private String task;
     private String subTask;
     private String subTask2;
-    private HashMap<ReplyType,ReplyModel> replies;
+    private HashMap<ReplyType,String> replies;
     private CategoryModel categoryModel;
 
     public TaskModel(String task) {
         this.task = task;
     }
 
-    public void setSubTask(String subTask){
+    public void setSubTask(String subTask) {
         this.subTask = subTask;
         this.replies = new HashMap<>();
     }
@@ -31,12 +32,21 @@ public class TaskModel {
         this.subTask2 = subTask2;
     }
 
-    public void addReplyModel(ReplyType replyType,ReplyModel replyModel){
-        replies.put(replyType, replyModel);
+    public void addAnswer(String answer,ReplyType replyType) {
+        replies.put(replyType, answer);
     }
 
-    public ReplyModel getReply(ReplyType replyType){
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public String getAnswer(ReplyType replyType){
         return replies.get(replyType);
+    }
+
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 
     public String getTask() {
