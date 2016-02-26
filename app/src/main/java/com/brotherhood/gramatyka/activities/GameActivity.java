@@ -149,7 +149,7 @@ public class GameActivity extends BaseActivity {
         Intent intent = new Intent(this, SummaryActivity.class);
         intent.putExtra("allAnswers", tasks.size());
         intent.putExtra("goodAnswers", goodAnswers);
-        if (getIntent().getExtras().getString("category") != null)
+        if (GAME_MODE == GameMode.CATEGORY_MODE)
             intent.putExtra("category", getIntent().getExtras().getString("category"));
         startActivity(intent);
     }

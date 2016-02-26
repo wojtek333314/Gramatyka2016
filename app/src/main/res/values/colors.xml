@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="mainColor1">#166695</color>
-    <color name="mainColor2">#12B526</color>
-    <color name="mainColor3">#E98B17</color>
-    <color name="mainColor4">#B71209</color>
-    <color name="green">#00ff00</color>
+    <color name="mainColor1">#5C759A</color>
+    <color name="mainColor2">#2B823A</color>
+    <color name="mainColor3">#AA6F39</color>
+    <color name="mainColor4">#8A271F</color>
+    <color name="green">#459A54</color>
 </resources>
