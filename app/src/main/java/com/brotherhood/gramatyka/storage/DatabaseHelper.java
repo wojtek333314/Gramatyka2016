@@ -215,7 +215,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(SUBTASK2, json.getString("subtask2"));
         values.put(TASK, json.getString("task"));
 
-        db.insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_REPLACE);//wrzuca do bazy danych,
+        db.insert(TABLE_NAME, null, values);//wrzuca do bazy danych,
+    }
+
+
+    public void clearDatabaseAndRecreate(){
+        getWritableDatabase().execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        getWritableDatabase().execSQL(TABLE_CREATE_EXPRESSION);
     }
 
     /**

@@ -101,6 +101,7 @@ public class SplashActivity extends BaseActivity {
                                     JSONObject jsonObject = new JSONObject(json).getJSONObject("data");
                                     String version = jsonObject.getString("version");
                                     getSharedPrefsHelper().putString("version", version);
+                                    getDatabaseHelper().clearDatabaseAndRecreate();
                                     for (int i = 0; i < jsonArray.length(); i++) {
                                         JSONObject singleObject = jsonArray.getJSONObject(i);
                                         getDatabaseHelper().saveSingleTaskModel(singleObject);
@@ -138,6 +139,7 @@ public class SplashActivity extends BaseActivity {
                 JSONObject jsonObject = new JSONObject(json).getJSONObject("data");
                 String version = jsonObject.getString("version");
                 getSharedPrefsHelper().putString("version", version);
+                getDatabaseHelper().clearDatabaseAndRecreate();
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject singleObject = jsonArray.getJSONObject(i);
                     getDatabaseHelper().saveSingleTaskModel(singleObject);
