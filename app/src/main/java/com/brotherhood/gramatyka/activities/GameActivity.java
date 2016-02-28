@@ -161,6 +161,8 @@ public class GameActivity extends BaseActivity {
             public void onClick(View v) {
                 if (nextTask.getVisibility() == View.VISIBLE)
                     return;
+                if(gameAnimationHelper.isAnyAnswerIsMarked())
+                    return;
 
                 if (v.equals(answerA))
                     onAnswerChoose(answerA);

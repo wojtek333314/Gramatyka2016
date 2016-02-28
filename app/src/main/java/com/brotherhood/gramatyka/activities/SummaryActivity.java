@@ -42,6 +42,7 @@ public class SummaryActivity extends BaseActivity {
     private String getMark(int goodAnswers,int allAnswers){
         float mark = (float)goodAnswers/(float)allAnswers;
         mark*=6;
+        System.out.println("RR:"+mark);
         return CategoriesAdapter.floatMarkToString(this,mark).replaceAll(getString(R.string.yourMark),"");
     }
 

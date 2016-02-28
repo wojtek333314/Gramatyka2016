@@ -50,29 +50,31 @@ public class CategoriesAdapter extends BaseAdapter {
         mark = (TextView) row.findViewById(R.id.rate);
 
         name.setText(data.get(position).getName());
-        mark.setText(floatMarkToString(baseActivity,data.get(position).getRate()*6));
+        mark.setText(baseActivity.getString(R.string.yourMark)+floatMarkToString(baseActivity, data.get(position).getRate() * 6));
 
         return (row);
     }
 
-    public static String floatMarkToString(Context context,float mark){
-        String stringMark = context.getString(R.string.yourMark);
+    public static String floatMarkToString(Context context, float mark) {
+        String stringMark = "";
         if(mark == 0)
-            stringMark += " -";
-        if(mark > 0 && mark <2)
-            stringMark += " 1";
+            stringMark = " -";
+        if (mark > 0 && mark < 2)
+            stringMark = " 1";
 
-        for(int i=1;i<6;i++)
-            if(mark >= i && mark < i+1)
-                stringMark += " "+String.valueOf(i);
+        for (int i = 2; i <= 6; i++)
+            if (mark >= i && mark < i + 1)
+                stringMark += " " + String.valueOf(i);
+        if (mark > 6)
+            stringMark = " 6";
 
-        if(mark - (int)mark > 0.5f)
-            stringMark+="+";
+        if (mark - (int) mark > 0.5f)
+            stringMark += "+ ";
 
         return stringMark;
     }
 
-    public void addCategoryModel(CategoryModel categoryModel){
+    public void addCategoryModel(CategoryModel categoryModel) {
         data.add(categoryModel);
     }
 }

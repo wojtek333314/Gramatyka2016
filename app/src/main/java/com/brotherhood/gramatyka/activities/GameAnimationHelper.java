@@ -20,6 +20,7 @@ public class GameAnimationHelper {
     private boolean nextTaskAnimating = false;
     private boolean anyAnswerIsMarked = false;
 
+
     public GameAnimationHelper(final GameActivity gameActivity) {
         this.gameActivity = gameActivity;
 
@@ -68,6 +69,7 @@ public class GameAnimationHelper {
     }
 
     public void onButtonAnim(Button button, boolean answerGood) {
+        anyAnswerIsMarked = true;
         gameActivity.getNextTask().startAnimation(nextTaskShow);
 
         answerButtonAnimation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
@@ -82,7 +84,6 @@ public class GameAnimationHelper {
             button.setBackground(gameActivity.getResources().getDrawable(R.drawable.answer_button_bad));
 
         button.startAnimation(answerButtonAnimation);
-        anyAnswerIsMarked = true;
     }
 
     public void resetAllButtonColors() {
